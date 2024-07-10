@@ -7,31 +7,22 @@ export const Demo = () => {
 	const { store, actions } = useContext(Context);
 
 	return (
-		<div className="container">
-			<ul className="list-group">
-				{store.demo.map((item, index) => {
-					return (
-						<li
-							key={index}
-							className="list-group-item d-flex justify-content-between"
-							style={{ background: item.background }}>
-							<Link to={"/single/" + index}>
-								<span>Link to: {item.title}</span>
-							</Link>
-							{// Conditional render example
-							// Check to see if the background is orange, if so, display the message
-							item.background === "orange" ? (
-								<p style={{ color: item.initial }}>
-									Check store/flux.js scroll to the actions to see the code
-								</p>
-							) : null}
-							<button className="btn btn-success" onClick={() => actions.changeColor(index, "orange")}>
-								Change Color
-							</button>
-						</li>
-					);
-				})}
-			</ul>
+		<div className="container p-3">
+			<form className=" bg-dark text-light">
+				<div className="form-group p-3">
+					<label for="exampleInputEmail1">Email address</label>
+					<input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" />
+					<small id="emailHelp" className="form-text text-muted">We'll never share your email with anyone else.</small>
+				</div>
+				<div className="form-group p-3">
+					<label for="exampleInputPassword1">Password</label>
+					<input type="password" className="form-control" id="exampleInputPassword1" placeholder="Password" />
+				</div>
+				<div className="mt-3">
+
+					<button type="submit" className="btn btn-primary">Submit</button>
+				</div>
+			</form>
 			<br />
 			<Link to="/">
 				<button className="btn btn-primary">Back home</button>
