@@ -13,7 +13,7 @@ api = Blueprint('api', __name__)
 CORS(api)
 
 #Create User
-@api.route('/user', methods=['POST'])
+@api.route('/register', methods=['POST'])
 def create_user():
     data = request.json
     email_in_data = data.get("email")
@@ -41,7 +41,7 @@ def create_user():
     return jsonify({"Message": "User created successfully"}), 201
 
 #Create Token
-@api.route('/token', methods=['POST'])
+@api.route('/login', methods=['POST'])
 def login_user():
     data = request.json
     email_in_data = data.get("email")
@@ -68,10 +68,10 @@ def login_user():
         }), 400
     
     access_token = create_access_token(identity=user.id)
-    return jsonify({"token": access_token}), 201
+    return jsonify({"token": access_token, "user": user.serialize()}), 201
 
 #Get user private info 
-@api.route('/user/private', methods=['GET'])
+@api.route('/single', methods=['GET'])
 @jwt_required()
 def get_user_private_info():
     user_id = get_jwt_identity()
@@ -85,9 +85,9 @@ def get_user_private_info():
     user = user_result[0]
 
     return jsonify({
-        "User_Pivate_info": {
+        "user": {
+            "id": user.id,
             "email": user.email,
-            "password": user.password,
             "user_is_active": user.is_active
         }
         }), 200
