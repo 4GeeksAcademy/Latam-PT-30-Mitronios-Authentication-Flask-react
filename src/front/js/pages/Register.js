@@ -25,7 +25,7 @@ export const Register = () => {
 
 					{/* Email input */}
 					<div className="form-group p-3">
-						<label for="exampleInputEmail1">Email address</label>
+						<label htmlFor="exampleInputEmail1">Email address</label>
 						<input type="email"
 							className="form-control"
 							id="exampleInputEmail1"
@@ -39,7 +39,7 @@ export const Register = () => {
 					<div className="form-group p-3">
 
 						{/* Password input */}
-						<label for="exampleInputPassword1">Password</label>
+						<label htmlFor="exampleInputPassword1">Password</label>
 						<input type="password" className="form-control"
 							id="exampleInputPassword1"
 							placeholder="Password"
